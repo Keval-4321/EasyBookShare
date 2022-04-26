@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/wishlist"
+        android:title="Profile"
+        android:icon="@drawable/ic_whishlist"
+        app:showAsAction="always"
+        android:iconTint="@color/white" />
+
+    <item android:id="@+id/profile"
+          android:title="Profile"
+          android:icon="@drawable/circle_profile"
+          app:showAsAction="always"
+          android:iconTint="@color/white" />
+
+</menu>

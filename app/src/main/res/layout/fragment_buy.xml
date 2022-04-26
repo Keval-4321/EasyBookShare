@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".fragments.BuyFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search books"
+        android:inputType="text"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"
+        android:elevation="8dp"
+        android:background="@drawable/bg_edt"
+        android:layout_marginTop="12dp"/>
+
+    <ScrollView
+        android:id="@+id/scrollview_buy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarThumbVertical="@android:color/transparent"
+        android:layout_marginTop="12dp"
+        android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_biographies" />
+
+        <include layout="@layout/layout_scifi" />
+
+        <include layout="@layout/layout_education" />
+
+        <TextView
+            android:id="@+id/txt_view_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View More"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:background="@drawable/bg_view_more"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="24dp"
+            android:layout_marginVertical="20dp"
+            android:elevation="8dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressbar_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/black"
+        android:visibility="visible"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466141869858",
+    "project_id": "easybookshare-cbe54",
+    "storage_bucket": "easybookshare-cbe54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466141869858:android:1b88c99d3d11d19687177b",
+        "android_client_info": {
+          "package_name": "com.example.easybookshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466141869858-764e94avhfjg8nvd6hl6toeu99kujrl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG7vOLHCF5yTKkBhBif97N-hWWdQWY5m0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466141869858-764e94avhfjg8nvd6hl6toeu99kujrl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
