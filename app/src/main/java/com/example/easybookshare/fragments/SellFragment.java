@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,7 +79,7 @@ public class SellFragment extends Fragment {
     CircleImageView civ1;
     CircleImageView civ2;
     CircleImageView civ3;
-    EditText edtBook, edtBookPages, edtOPrice, edtSPrice , edtAuthor;
+    EditText edtBook, edtBookPages, edtOPrice, edtSPrice, edtAuthor;
     int id;
     ArrayList<Bitmap> bitmaps;
 
@@ -126,6 +127,7 @@ public class SellFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sell, container, false);
@@ -232,6 +234,9 @@ public class SellFragment extends Fragment {
                         } else {
                             // txtUri.setText("Uri :\n" + uriPdfData);
                             // txtPath.setText("Path :\n" +uriPdfData.getPath());
+//                            DatabaseReference userRef = firebaseDatabase.getReference("users").child(userId).child("phoneNumber");
+
+
                             alertDialog.cancel();
                             //Toast.makeText(getActivity(), "" + categoryName +"=>"+subcategoryName, Toast.LENGTH_SHORT).show();
                             progressDialog = new ProgressDialog(getActivity(), R.style.CustomProgressDialog);
@@ -405,93 +410,6 @@ public class SellFragment extends Fragment {
                 });
     }
 
-    // 1st way
-    private void spinnerDataCategory()
-    {
-        // fetching categories from the database
-        databaseReference = firebaseDatabase.getReference("categories");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                listCategories.clear();
-                if(snapshot.exists())
-                {
-                    listCategories.add("Select");
-                     for(DataSnapshot dataSnapshot : snapshot.getChildren())
-                     {
-                         String category = dataSnapshot.getValue(String.class);
-                         listCategories.add(category);
-                     }
-                     ArrayAdapter arrayAdapterCategory = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,
-                            listCategories) {
-                        @NonNull
-                        @Override
-                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                            TextView txtView = (TextView) super.getView(position, convertView, parent);
-                            txtView.setTextColor(Color.WHITE);
-                            txtView.setTextSize(20);
-                            txtView.setEllipsize(TextUtils.TruncateAt.END);
-                            txtView.setSingleLine();
-                            return txtView;
-                        }
-                    };
-                    spinnerCategory.setAdapter(arrayAdapterCategory);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        // for the default , to set "select" in subcategory
-        loadSubCatGeneral();
-
-        //spinnerCategory.setSelection(0);
-        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
-            {
-                categoryName = adapterView.getItemAtPosition(i).toString();
-                loadSubCategoryDataBasedOnCategory();
-                if(categoryName.equals("Biographies"))
-                {
-                    Log.e("spinner", "onItemSelected: " + categoryName );
-                    loadSubCatBiographies();
-
-                } else if (categoryName.equals("sci-fi"))
-                {
-                    Log.e("spinner", "onItemSelected: " + categoryName );
-                    loadSubCatSciFi();
-
-                } else if (categoryName.equals("Education"))
-                {
-                    Log.e("spinner", "onItemSelected: " + categoryName );
-                    loadSubCatEducation();
-                }
-                else
-                {
-                    loadSubCatGeneral();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-    }
-
-    private void loadSubCategoryDataBasedOnCategory()
-    {
-
-    }
-
     private void loadSubCatGeneral()
     {
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,
@@ -509,187 +427,6 @@ public class SellFragment extends Fragment {
             }
         };
         spinnerSubCategory.setAdapter(arrayAdapter);
-    }
-    private void loadSubCatEducation()
-    {
-        ArrayList<String> listEducation = new ArrayList<>();
-        databaseReference = firebaseDatabase.getReference("subcategories").child("sc3_education");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                listEducation.clear();
-                listEducation.add("Select");
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                    {
-                        String subCat = dataSnapshot.getValue(String.class);
-                        listEducation.add(subCat);
-                    }
-
-                    ArrayAdapter arrayAdapterEdu = new ArrayAdapter(getActivity()
-                            , android.R.layout.simple_list_item_1, listEducation.toArray())
-                    {
-
-                        @NonNull
-                        @Override
-                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                            TextView txtView = (TextView) super.getView(position, convertView, parent);
-                            txtView.setTextColor(Color.WHITE);
-                            txtView.setTextSize(20);
-                            txtView.setEllipsize(TextUtils.TruncateAt.END);
-                            txtView.setSingleLine();
-                            return txtView;
-                        }
-                    };
-
-                    spinnerSubCategory.setAdapter(arrayAdapterEdu);
-                    spinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            subcategoryName = adapterView.getItemAtPosition(i).toString();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "not available", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-    private void loadSubCatSciFi()
-    {
-        ArrayList<String> listSciFi = new ArrayList<>();
-        databaseReference = firebaseDatabase.getReference("subcategories").child("sc2_scifi");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                listSciFi.clear();
-                listSciFi.add("Select");
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                    {
-                        String subCat = dataSnapshot.getValue(String.class);
-                        listSciFi.add(subCat);
-                    }
-                    ArrayAdapter arrayAdapterSciFi = new ArrayAdapter(getActivity()
-                            , android.R.layout.simple_list_item_1, listSciFi.toArray())
-                    {
-                        @NonNull
-                        @Override
-                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                            TextView txtView = (TextView) super.getView(position, convertView, parent);
-                            txtView.setTextColor(Color.WHITE);
-                            txtView.setTextSize(20);
-                            txtView.setEllipsize(TextUtils.TruncateAt.END);
-                            txtView.setSingleLine();
-                            return txtView;
-                        }
-                    };
-                    spinnerSubCategory.setAdapter(arrayAdapterSciFi);
-                    spinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            subcategoryName = adapterView.getItemAtPosition(i).toString();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "not available", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-    private void loadSubCatBiographies()
-    {
-        ArrayList<String> listBiographies = new ArrayList<>();
-        databaseReference = firebaseDatabase.getReference("subcategories").child("sc1_biographies");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                listBiographies.clear();
-                listBiographies.add("Select");
-                if(snapshot.exists())
-                {
-                     for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                     {
-                         String subCat = dataSnapshot.getValue(String.class);
-                         listBiographies.add(subCat);
-                     }
-                    Log.e("spinner", "onDataChange: " + listBiographies);
-                    ArrayAdapter arrayAdapterBio = new ArrayAdapter(getActivity()
-                            , android.R.layout.simple_list_item_1, listBiographies.toArray())
-                    {
-                        @NonNull
-                        @Override
-                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                            TextView txtView = (TextView) super.getView(position, convertView, parent);
-                            txtView.setTextColor(Color.WHITE);
-                            txtView.setTextSize(20);
-                            txtView.setEllipsize(TextUtils.TruncateAt.END);
-                            txtView.setSingleLine();
-                            return txtView;
-                        }
-                    };
-                    spinnerSubCategory.setAdapter(arrayAdapterBio);
-                    spinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            subcategoryName = adapterView.getItemAtPosition(i).toString();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "not available", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     // 2nd way
@@ -745,25 +482,8 @@ public class SellFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
             {
                 categoryName = adapterView.getItemAtPosition(i).toString();
-                if (categoryName.equals("Biographies"))
-                {
-                    Log.e("spinner", "onItemSelected: " + categoryName );
-                    loadSubCatBiographies2(mapCategoryData.get("Biographies"));
-
-                } else if (categoryName.equals("sci-fi"))
-                {
-                    Log.e("spinner", "onItemSelected: " + categoryName );
-                    loadSubCatSciFi2(mapCategoryData.get("sci-fi"));
-
-                } else if (categoryName.equals("Education"))
-                {
-                    Log.e("spinner", "onItemSelected: " + categoryName );
-                    loadSubCatEducation2(mapCategoryData.get("Education"));
-                }
-                else
-                {
-                    loadSubCatGeneral();
-                }
+                Log.e("spinner", "onItemSelected: " + categoryName );
+                loadSubCategories(mapCategoryData.get(categoryName));
             }
 
             @Override
@@ -773,16 +493,16 @@ public class SellFragment extends Fragment {
         });
 
     }
-    private void loadSubCatEducation2(String catId)
+    private void loadSubCategories(String catId)
     {
-        ArrayList<String> listSubCat = new ArrayList<>();
+        ArrayList<String> listCategories = new ArrayList<>();
         databaseReference = firebaseDatabase.getReference("sub_category");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
-                listSubCat.clear();
-                listSubCat.add("Select");
+                listCategories.clear();
+                listCategories.add("Select");
                 if(snapshot.exists())
                 {
                     for(DataSnapshot dataSnapshot:snapshot.getChildren())
@@ -790,138 +510,12 @@ public class SellFragment extends Fragment {
                         SubCategoryModel subCategoryModel = dataSnapshot.getValue(SubCategoryModel.class);
                         if(catId.contains(subCategoryModel.getCategoryId()))
                         {
-                            listSubCat.add(subCategoryModel.getSubCategoryName());
+                            listCategories.add(subCategoryModel.getSubCategoryName());
                         }
                     }
-                    ArrayAdapter arrayAdapterEdu = new ArrayAdapter(getActivity()
-                            , android.R.layout.simple_list_item_1, listSubCat.toArray())
-                    {
-                        @NonNull
-                        @Override
-                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                            TextView txtView = (TextView) super.getView(position, convertView, parent);
-                            txtView.setTextColor(Color.WHITE);
-                            txtView.setTextSize(20);
-                            txtView.setEllipsize(TextUtils.TruncateAt.END);
-                            txtView.setSingleLine();
-                            return txtView;
-                        }
-                    };
-
-                    spinnerSubCategory.setAdapter(arrayAdapterEdu);
-                    spinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            subcategoryName = adapterView.getItemAtPosition(i).toString();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "not available", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-    private void loadSubCatSciFi2(String catId)
-    {
-        ArrayList<String> listSciFi = new ArrayList<>();
-        databaseReference = firebaseDatabase.getReference("sub_category");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                listSciFi.clear();
-                listSciFi.add("Select");
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                    {
-                        SubCategoryModel subCategoryModel = dataSnapshot.getValue(SubCategoryModel.class);
-                        if(catId.contains(subCategoryModel.getCategoryId()))
-                        {
-                            listSciFi.add(subCategoryModel.getSubCategoryName());
-                        }
-                    }
-                    ArrayAdapter arrayAdapterSciFi = new ArrayAdapter(getActivity()
-                            , android.R.layout.simple_list_item_1, listSciFi.toArray())
-                    {
-                        @NonNull
-                        @Override
-                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-                            TextView txtView = (TextView) super.getView(position, convertView, parent);
-                            txtView.setTextColor(Color.WHITE);
-                            txtView.setTextSize(20);
-                            txtView.setEllipsize(TextUtils.TruncateAt.END);
-                            txtView.setSingleLine();
-                            return txtView;
-                        }
-                    };
-                    spinnerSubCategory.setAdapter(arrayAdapterSciFi);
-                    spinnerSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            subcategoryName = adapterView.getItemAtPosition(i).toString();
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-                }
-                else
-                {
-                    Toast.makeText(getActivity(), "not available", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-    private void loadSubCatBiographies2(String catId)
-    {
-        ArrayList<String> listBiographies = new ArrayList<>();
-        databaseReference = firebaseDatabase.getReference("sub_category");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                listBiographies.clear();
-                listBiographies.add("Select");
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot dataSnapshot:snapshot.getChildren())
-                    {
-                        SubCategoryModel subCategoryModel = dataSnapshot.getValue(SubCategoryModel.class);
-                        if(catId.contains(subCategoryModel.getCategoryId()))
-                        {
-                            listBiographies.add(subCategoryModel.getSubCategoryName());
-                        }
-                    }
-                    Log.e("spinner", "onDataChange: " + listBiographies);
+                    Log.e("spinner", "onDataChange: " + listCategories);
                     ArrayAdapter arrayAdapterBio = new ArrayAdapter(getActivity()
-                            , android.R.layout.simple_list_item_1, listBiographies.toArray())
+                            , android.R.layout.simple_list_item_1, listCategories.toArray())
                     {
                         @NonNull
                         @Override

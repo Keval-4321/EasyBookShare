@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_all_books.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_book_details.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_dash_board.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_login.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_user_profile.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_wish_list.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/fragment_buy.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/fragment_sell.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/item_layout_book.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_biographies.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_book_detail.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_custom_dialog.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_custom_edit_data_dialog.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_education.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_image_slider.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_scifi.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/PINKESH/AndroidStudioProjects/EasyBookShare/app/src/main/res/drawable/bg_dialog.xml" value="0.1225" />
         <entry key="..\:/Users/PINKESH/AndroidStudioProjects/EasyBookShare/app/src/main/res/drawable/bg_edt.xml" value="0.1225" />
         <entry key="..\:/Users/PINKESH/AndroidStudioProjects/EasyBookShare/app/src/main/res/drawable/bg_edt2.xml" value="0.1225" />
@@ -49,7 +65,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
