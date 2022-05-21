@@ -5,6 +5,7 @@ public class BookModel
     String bookId;
     String userId;
     String imgUrl1,imgUrl2,imgUrl3;
+    String volume,quantity;
     String bookName,noOfPages,categoryName,subCategoryName,oPrice,sPrice;
     boolean isWished = false;
     String authorName;
@@ -32,7 +33,7 @@ public class BookModel
 
     public BookModel(String bookId,String userId ,String imgUrl1, String imgUrl2, String imgUrl3,
                      String bookName, String noOfPages, String categoryName, String
-                             subCategoryName, String oPrice, String sPrice,boolean isWished
+                             subCategoryName,String volume,String quantity, String oPrice, String sPrice,boolean isWished
                     ,String authorName)
     {
 
@@ -45,6 +46,8 @@ public class BookModel
         this.noOfPages = noOfPages;
         this.categoryName = categoryName;
         this.subCategoryName = subCategoryName;
+        this.quantity = quantity;
+        this.volume = volume;
         this.oPrice = oPrice;
         this.sPrice = sPrice;
         this.isWished = isWished;
@@ -141,6 +144,22 @@ public class BookModel
 
     public String getoPrice() {
         return oPrice;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
     public void setoPrice(String oPrice) {

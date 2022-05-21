@@ -2,6 +2,7 @@ package com.example.easybookshare.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.easybookshare.BookDetailsActivity;
 import com.example.easybookshare.R;
+import com.example.easybookshare.helpers.SharedPreferenceManager;
 import com.example.easybookshare.models.WishBooksLoadModel;
 
 import java.util.ArrayList;
@@ -57,7 +59,12 @@ public class WishListLoadAdapter extends RecyclerView.Adapter<WishListLoadAdapte
 //                activity.startActivity(intent);
 //            }
 //        });
-
+        Intent intent = new Intent(activity, BookDetailsActivity.class);
+        intent.putExtra("BOOK_CLICKED_ID",model.getId());
+        SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager(activity);
+        SharedPreferences sharedPreferences = sharedPreferenceManager.sharedPreferencesData;
+        intent.putExtra("USER_ID",sharedPreferences.getString("USER_ID",""));
+        activity.startActivity(intent);
     }
 
     @Override

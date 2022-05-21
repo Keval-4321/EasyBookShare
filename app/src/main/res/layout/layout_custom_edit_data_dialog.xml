@@ -282,6 +282,40 @@
                 android:textColorHint="@color/white"
                 android:textSize="20sp" />
 
+            <EditText
+                android:id="@+id/edt_volume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edt2"
+                android:drawableLeft="@drawable/resize_icon"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/white"
+                android:hint="Book volume"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:padding="14dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edt_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edt2"
+                android:drawableLeft="@drawable/resize_icon"
+                android:drawablePadding="12dp"
+                android:drawableTint="@color/white"
+                android:hint="Book Quantity"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:padding="14dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
+
             <Button
                 android:id="@+id/btn_update"
                 android:layout_width="wrap_content"

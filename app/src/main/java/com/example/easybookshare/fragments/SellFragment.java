@@ -79,7 +79,7 @@ public class SellFragment extends Fragment {
     CircleImageView civ1;
     CircleImageView civ2;
     CircleImageView civ3;
-    EditText edtBook, edtBookPages, edtOPrice, edtSPrice, edtAuthor;
+    EditText edtBook, edtBookPages, edtOPrice, edtSPrice, edtAuthor, edtVolume,edtQuantity;
     int id;
     ArrayList<Bitmap> bitmaps;
 
@@ -102,6 +102,8 @@ public class SellFragment extends Fragment {
     String bookSPrice = null;
     String catName = null;
     String subCatName = null;
+    String volume= null;
+    String quantity = null;
     String authorName = null;
 
 
@@ -177,6 +179,8 @@ public class SellFragment extends Fragment {
                 edtOPrice = view1.findViewById(R.id.edt_oPrice);
                 edtSPrice = view1.findViewById(R.id.edt_sPrice);
                 edtAuthor = view1.findViewById(R.id.edt_author);
+                edtQuantity = view1.findViewById(R.id.edt_quantity);
+                edtVolume = view1.findViewById(R.id.edt_volume);
 
 
                 spinnerCategory = view1.findViewById(R.id.spinner_category);
@@ -220,6 +224,8 @@ public class SellFragment extends Fragment {
                         bookOPrice = edtOPrice.getText().toString();
                         bookName = edtBook.getText().toString();
                         authorName = edtAuthor.getText().toString();
+                        volume = edtVolume.getText().toString();
+                        quantity = edtQuantity.getText().toString();
                         img1 = uris.get("civ1");
                         img2 = uris.get("civ2");
                         img3 = uris.get("civ3");
@@ -227,7 +233,7 @@ public class SellFragment extends Fragment {
                         subCatName = subcategoryName;
 
                         if (img1 == null | img2 == null | img3 == null | bookName == null | bookOPrice == null
-                                | catName == null | subCatName == null | bookSPrice == null | bookPages == null
+                                | catName == null | subCatName == null | volume==null| quantity==null| bookSPrice == null | bookPages == null
                                 | authorName==null)
                         {
                             Toast.makeText(getActivity(), "Fill all details...", Toast.LENGTH_SHORT).show();
@@ -285,6 +291,8 @@ public class SellFragment extends Fragment {
                 bookOPrice = null;
                 bookSPrice = null;
                 catName = null;
+                volume = null;
+                quantity = null;
                 subCatName = null;
                 authorName = null;
             }
@@ -383,7 +391,7 @@ public class SellFragment extends Fragment {
                                                     url1, url2, url3,
                                                     bookName, bookPages,
                                                     categoryName, subcategoryName,
-                                                    bookOPrice, bookSPrice,false,authorName);
+                                                    volume, quantity ,bookOPrice, bookSPrice,false,authorName);
                                             storeBooks(bookModel);
                                         } else {
                                             progressDialog.dismiss();

@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyBookShare">
         <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".AllBooksActivity"
             android:exported="false" />
         <activity
@@ -25,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".BookDetailsActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".DashBoardActivity"
             android:exported="false" />

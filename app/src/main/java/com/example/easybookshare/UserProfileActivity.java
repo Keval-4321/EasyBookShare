@@ -71,9 +71,13 @@ public class UserProfileActivity extends AppCompatActivity
                 String strPhoneNumber = edtPhoneNumber.getText().toString();
                 String strCity = edtCity.getText().toString();
 
+//                sharedPreferenceManager = new SharedPreferenceManager(UserProfileActivity.this);
+//                String checkPhone = ^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$;
+//                SharedPreferences.Editor editor = sharedPreferenceManager.sharedPreferencesData.edit();
+//                editor.putBoolean("IS_PHONE", false);
+
                 UserModel userModel = new UserModel(userId,strUserName,strEmail,strPassword,
                         strCity,strPhoneNumber);
-
                 progressDialog.setMessage("updating Profile...");
                 progressDialog.show();
 
@@ -84,6 +88,9 @@ public class UserProfileActivity extends AppCompatActivity
                     {
                         progressDialog.cancel();
                         loadUserProfileData();
+                        Intent intent = new Intent(UserProfileActivity.this, DashBoardActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

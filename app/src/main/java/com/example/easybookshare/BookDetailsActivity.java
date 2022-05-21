@@ -2,6 +2,7 @@ package com.example.easybookshare;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -51,6 +52,8 @@ public class BookDetailsActivity extends AppCompatActivity {
     BookModel bookModel;
     String userIdFromItemClicked;
 
+    AppCompatTextView bookPages,bookName, bookCatName, bookSubCatName, bookOrgPrice, bookSellingPrice, bookAuthName, bookQty, bookVolume;
+
     public static ArrayList<WishBooksLoadModel> wishList;
     WishBooksLoadModel wishBooksLoadModel;
 
@@ -71,7 +74,16 @@ public class BookDetailsActivity extends AppCompatActivity {
         sliderView = findViewById(R.id.imageSlider);
         wishList = new ArrayList<>();
 
-        textBookDetail = findViewById(R.id.txt_book_detail);
+        bookName = findViewById(R.id.tvBookTitle);
+        bookCatName = findViewById(R.id.tvBookCatName);
+        bookSubCatName = findViewById(R.id.tvBookSubCat);
+        bookOrgPrice = findViewById(R.id.tvBookOrgPrice);
+        bookSellingPrice = findViewById(R.id.tvBookSellingPrice);
+        bookAuthName = findViewById(R.id.tvBookAuthName);
+        bookVolume = findViewById(R.id.tvBookVolume);
+        bookQty = findViewById(R.id.tvBookQty);
+        bookPages = findViewById(R.id.tvBookNoOfPages);
+
         txtUname = findViewById(R.id.txt_uname);
         arrayListBookImages = new ArrayList<>();
 
@@ -100,21 +112,39 @@ public class BookDetailsActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         bookModel = dataSnapshot.getValue(BookModel.class);
-                        String bookName = bookModel.getBookName();
-                        String bookOPrice = bookModel.getoPrice();
-                        String bookSPrice = bookModel.getsPrice();
-                        String pages = bookModel.getNoOfPages();
-                        String categoryName = bookModel.getCategoryName();
-                        String subCategoryName = bookModel.getSubCategoryName();
-                        String authorName = bookModel.getAuthorName();
+                        String bookName1 = bookModel.getBookName();
+                        String bookOPrice1 = bookModel.getoPrice();
+                        String bookSPrice1 = bookModel.getsPrice();
+                        String pages1 = bookModel.getNoOfPages().toString();
+                        String categoryName1 = bookModel.getCategoryName();
+                        String subCategoryName1 = bookModel.getSubCategoryName();
+                        String authorName1 = bookModel.getAuthorName();
+                        String qty1 = bookModel.getQuantity();
+                        String volume1 = bookModel.getVolume();
                         userIdFromBookClicked = bookModel.getUserId();
                         boolean wished = bookModel.isWished();
-                        textBookDetail.setText("Book name :" + bookName + "\nbook original price :" + bookOPrice
+                        bookName.setText(bookName1);
+                        bookCatName.setText(categoryName1);
+                        bookSubCatName.setText(subCategoryName1);
+                        bookOrgPrice.setText(bookOPrice1);
+                        bookSellingPrice.setText(bookSPrice1);
+                        bookAuthName.setText(authorName1);
+                        bookPages.setText(pages1);
+                        bookQty.setText(qty1);
+                        bookVolume.setText(volume1);
+//                        bookCatName.setText(categoryName1);
+//                        bookSubCatName.setText(subCategoryName1);
+//                        bookOrgPrice.setText(bookOPrice1);
+//                        bookSellingPrice.setText(bookSPrice1);
+//                        bookAuthName.setText(authorName1);
+//                        bookPages.setText(pages1);
+
+                        /*textBookDetail.setText("Book name :" + bookName + "\nbook original price :" + bookOPrice
                                 + "\nbook selling price :" + bookSPrice + "\npages :" + pages
                                 + "\nCategory name :" + categoryName
                                 + "\nSub-Category name :" + subCategoryName
                                 + "\nAuthor name :" + authorName);
-
+*/
                         arrayListBookImages.add(bookModel.getImgUrl1());
                         arrayListBookImages.add(bookModel.getImgUrl2());
                         arrayListBookImages.add(bookModel.getImgUrl3());
@@ -156,35 +186,28 @@ public class BookDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
+            public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(BookDetailsActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
         // if current user ej book post user hoy to call na lagvo joiye so...
-        if(userIdFromBookClicked.equals(userId))
-        {
+        if (userIdFromBookClicked.equals(userId)) {
             btnDial.setVisibility(View.GONE);
         }
 
-        btnDial.setOnClickListener(new View.OnClickListener()
-        {
+        btnDial.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 //String txtOfBtn = btnDial.getText().toString();
-                if (!phNo.equals("not provided"))
-                {
+                if (!phNo.equals("not provided")) {
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     Uri u = Uri.parse("tel:" + phNo);
                     intent.setData(u);
                     // Uri u = Uri.parse("tel:" + e.getText().toString());
                     //intent.setData(Uri.parse("tel:<9848383838>"));
                     startActivity(intent);
-                }
-                else
-                {
+                } else {
                     Toast.makeText(BookDetailsActivity.this, "phone number is not available", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -195,8 +218,7 @@ public class BookDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         Log.e("call", "onCreateOptionsMenu: called");
 
 
@@ -210,13 +232,10 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         // if current user ej book post user hoy to  , ene potani book wishlist
         // na thavi joiye...
-        if(userIdFromBookClicked.equals(userId))
-        {
+        if (userIdFromBookClicked.equals(userId)) {
             emptyBookMark.setVisible(false);
             filledBookMark.setVisible(false);
-        }
-        else
-        {
+        } else {
             // getting wish list status from the wishlists table , if id is present
             // then book is wishlist so set filled book marked icon
             databaseReference = firebaseDatabase.getReference("wishlists").child(userId);

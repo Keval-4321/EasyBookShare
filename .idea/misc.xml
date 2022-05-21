@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_all_books.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_book_details.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_book_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_dash_board.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_login.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_reset_password.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_sign_up.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_user_profile.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/activity_wish_list.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/fragment_buy.xml" value="0.17074275362318841" />
@@ -18,6 +20,7 @@
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_custom_edit_data_dialog.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_education.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_image_slider.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_password_reset.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/KEVAL/AndroidStudioProjects/EasyBookShare/EasyBookShare/app/src/main/res/layout/layout_scifi.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/PINKESH/AndroidStudioProjects/EasyBookShare/app/src/main/res/drawable/bg_dialog.xml" value="0.1225" />
         <entry key="..\:/Users/PINKESH/AndroidStudioProjects/EasyBookShare/app/src/main/res/drawable/bg_edt.xml" value="0.1225" />

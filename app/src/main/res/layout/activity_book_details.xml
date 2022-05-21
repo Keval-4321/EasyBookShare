@@ -10,25 +10,25 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="230dp"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="4dp"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="12dp"
-        android:layout_marginHorizontal="4dp"
         app:cardElevation="4dp">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/img_book"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            android:src="@drawable/bg" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/img_book"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:scaleType="centerCrop"-->
+        <!--            android:src="@drawable/bg" />-->
 
 
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="230dp"
             app:sliderAnimationDuration="600"
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
@@ -45,17 +45,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/txt_book_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="Book 1"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -64,49 +53,238 @@
         android:layout_weight="1"
         android:scrollbarThumbVertical="@android:color/transparent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookDesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="What is About ?"
-                android:textAlignment="center"
+                android:text="Book Description"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txt_book_detail"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookTitleLabel"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:lineSpacingExtra="1dp"
-                android:text="Lorem Ipsum is simply dummy text of the
-        printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type s"
-                android:textSize="18sp" />
+                android:layout_marginTop="10dp"
+                android:text="Book Title :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookDesLabel" />
 
-        </LinearLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookCatNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Category Name :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookTitleLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookSubCatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Sub-Category Name :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookCatNameLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookOrgPriceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Original Price :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookSubCatLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookSellingPriceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Selling Price :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookOrgPriceLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookNoOfPageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="No Of pages :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookSellingPriceLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookAuthNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Author Name :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookNoOfPageLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookVolumeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Book Volume :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookAuthNameLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookQtpLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Quantity :"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBookVolumeLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookTitleLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookTitleLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookCatName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookCatNameLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookCatNameLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookSubCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookSubCatLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookSubCatLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookOrgPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookOrgPriceLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookOrgPriceLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookSellingPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookSellingPriceLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookSellingPriceLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookNoOfPages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookNoOfPageLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookNoOfPageLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookAuthName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookAuthNameLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookAuthNameLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookVolume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookVolumeLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookVolumeLabel" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookQty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rich dad poor dad"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBookQtpLabel"
+                app:layout_constraintStart_toEndOf="@id/tvBookSubCatLabel"
+                app:layout_constraintTop_toTopOf="@id/tvBookQtpLabel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:elevation="40dp">
+        android:elevation="40dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txt_uname"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:hint="Posted By : xxx"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_gravity="center"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_dial"
@@ -124,3 +302,7 @@
     </LinearLayout>
 
 </LinearLayout>
+
+    <!--
+    txt_book_detail
+    -->

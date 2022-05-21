@@ -18,14 +18,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnLogin;
+    Button btnLogin, btnReset;
     EditText edtEmail,edtPwd;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -41,15 +40,29 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnLogin = findViewById(R.id.btn_login);
+        btnLogin = findViewById(R.id.btn_email);
         edtEmail = findViewById(R.id.edt_email);
         edtPwd = findViewById(R.id.edt_pwd);
+        btnReset = findViewById(R.id.btn_email);
 
         firebaseDatabase = FirebaseDatabase.getInstance("https://easybookshare-cbe54-default-rtdb.firebaseio.com/");
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this,R.style.CustomProgressDialog);
 
+//        btnReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+    }
+
+    public void resetOnClick(View view)
+    {
+        Intent intent = new Intent(this, ResetPasswordActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void SignUpHere(View view)
@@ -77,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
         {
-            edtEmail.setError(null);  // first of all error remove karse
+            edtEmail.setError(null);
             return true;
         }
     }

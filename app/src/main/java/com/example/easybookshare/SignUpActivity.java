@@ -142,7 +142,7 @@ public class SignUpActivity extends AppCompatActivity {
             {
                 String uniqueKey = authResult.getUser().getUid();
                 String phoneNumber = "not provided";
-                UserModel user = new UserModel(uniqueKey, strUname, strEmail, strPwd, strCity,phoneNumber);
+                UserModel user = new UserModel(uniqueKey, strUname, strEmail, strPwd, strCity, phoneNumber);
                 databaseReference.child("users").child(uniqueKey).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
